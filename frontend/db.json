@@ -1,0 +1,16 @@
+{
+  "users": [
+    {
+      "id": "c336",
+      "fname": "ggggggggggg",
+      "lname": "llllllllllll",
+      "email": "rhydham@gmail.com",
+      "pswd": "aaaaaaaa",
+      "cpswd": "aaaaaaaa",
+      "contact": "07778884866",
+      "dob": "2024-04-24",
+      "country": "India",
+      "state": "Gujarat"
+    }
+  ]
+}
