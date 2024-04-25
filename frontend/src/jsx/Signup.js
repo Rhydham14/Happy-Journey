@@ -34,8 +34,8 @@ const Signup = () => {
     fname: "",
     lname: "",
     email: "",
-    pswd: "",
-    cpswd: "",
+    password: "",
+    cpassword: "",
     contact: "",
     dob: "",
     country: "", // Add country property to data state
@@ -44,8 +44,8 @@ const Signup = () => {
   const [selectedCountry, setSelectedCountry] = useState("");
   const [availableStates, setAvailableStates] = useState([]);
   const [valid, setValid] = useState(false);
-  const [pswd, setPswd] = useState("");
-  const [cpswd, setCpswd] = useState("");
+  const [password, setpassword] = useState("");
+  const [cpassword, setCpassword] = useState("");
   const navigate = useNavigate();
 
   const handleCountryChange = (event) => {
@@ -70,15 +70,15 @@ const Signup = () => {
   const handleSubmit = async (event) => {
     event.preventDefault(); // Prevent default form submission behavior
     try {
-      const response = await axios.post("http://localhost:3001/users", data); // Replace with your API endpoint
+      const response = await axios.post("http://localhost:4000/api/users/register", data); // Replace with your API endpoint
       console.log(response.data); // Handle successful response (optional)
       setData({
         // Reset form data after successful submission
         fname: "",
         lname: "",
         email: "",
-        pswd: "",
-        cpswd: "",
+        password: "",
+        cpassword: "",
         contact: "",
         dob: "",
         country: "",
@@ -93,22 +93,22 @@ const Signup = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
   
-    if (name === "pswd") {
-      setPswd(value);
-    } else if (name === "cpswd") {
-      setCpswd(value);
+    if (name === "password") {
+      setpassword(value);
+    } else if (name === "cpassword") {
+      setCpassword(value);
     }
   
     setData({ ...data, [name]: value });
   };
   
   useEffect(() => {
-    if (pswd.length >= 8 && cpswd === pswd) {
+    if (password.length >= 8 && cpassword === password) {
       setValid(true);
     } else {
       setValid(false);
     }
-  }, [pswd, cpswd]); // Run this effect whenever 'pswd' or 'cpswd' changes
+  }, [password, cpassword]); // Run this effect whenever 'password' or 'cpassword' changes
   return (
     <>
       <div className="container-fluid ">
@@ -164,8 +164,8 @@ const Signup = () => {
                   class="form-control"
                   id="password"
                   placeholder="Password"
-                  name="pswd"
-                  value={data.pswd}
+                  name="password"
+                  value={data.password}
                   onChange={handleChange}
                 />
               </div>
@@ -176,8 +176,8 @@ const Signup = () => {
                   class="form-control"
                   id="confirmPassword"
                   placeholder="Confirm Password"
-                  name="cpswd"
-                  value={data.cpswd}
+                  name="cpassword"
+                  value={data.cpassword}
                   onChange={handleChange}
                 />
               </div>

@@ -9,21 +9,25 @@ const Login = () => {
   const navigate = useNavigate();
 
   const handleChange = (e) => {
+    // Update the credentials state with the new value
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
     try {
-      const response = await axios.get('http://localhost:3001/users');
-      const users = response.data;
+      // Send POST request to login endpoint with credentials
+      const response = await axios.post('http://localhost:4000/api/users/login', credentials);
+      
+      console.log("Response from server:", response.data.fname);
+      const fname = response.data.fname
 
-      const user = users.find(
-        (user) => user.email === credentials.email && user.pswd === credentials.password
-      );
-
-      if (user) {
-        localStorage.setItem('fname', user.fname);
+      // Check if login was successful (customize this based on your backend response)
+      if (response.status === 200 && fname !== undefined  ) {
+        // Assuming response.data contains user information
+        const user = response.data;
+        localStorage.setItem('fname', user.fname); // Save user's first name in local storage
         navigate('/dashboard');
       } else {
         setError('Invalid email or password');

@@ -1,6 +1,6 @@
 const express = require("express");
 require("../backend/connection/database.js");
-const PORT = process.env.PORT || 4000;
+const PORT = 4000;
 const userRoutes = require("../backend/routes/userRoutes.js");
 
 
