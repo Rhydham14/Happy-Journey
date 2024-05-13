@@ -87,6 +87,9 @@ const Login = () => {
             <Link to="/signup" className="nav-link text-dark text-sm">
               Sign up
             </Link>
+            <Link to="/dashboard" className="nav-link text-success bold  text-sm">
+              Dashboard
+            </Link>
           </form>
         </div>
       </div>
